@@ -20,15 +20,15 @@ const translations = {
     nav_scraping: "Scraping",
     nav_dev: "Desarrollo",
     nav_ux: "UX/UI",
-    nav_support: "Éxito del Cliente",
+    nav_support: "Atención al Cliente",
     scraping_title: "Scraping y Automatización",
-    scraping_text: "Uso de Playwright, Selenium, CloudScraper, BeautifulSoup con integración Notion & n8n. Probado en GitHub Codespace, Google Colab y Docker.",
+    scraping_text: "Uso de Playwright, Selenium, CloudScraper, BeautifulSoup e integración con Notion & n8n. Probado en GitHub Codespace, Google Colab y Docker.",
     dev_title: "Desarrollo Web y de Software",
-    dev_text: "Diseño de proyectos web con Flask, Notion API, GitHub Actions. Experiencia en automatización de flujos y despliegue vía GitHub Pages & Codespace.",
+    dev_text: "Diseño de proyectos web con Flask, Notion API, GitHub Actions. Experiencia en automatización de flujos de trabajo y despliegue vía GitHub Pages & Codespace.",
     ux_title: "UX/UI y Diseño",
-    ux_text: "Proyectos en Figma, integración de principios UX. Estilo visual inspirado en el anime japonés y universo shonen.",
-    support_title: "Éxito del Cliente y Comunicación",
-    support_text: "Experiencia en gestión de clientes, comunicación técnica clara, y documentación en Notion. Alta capacidad para acompañar un proyecto hasta el éxito.",
+    ux_text: "Proyectos diseñados en Figma, integrando principios de UX para mejorar la experiencia. Estilo visual influenciado por la animación japonesa y el universo shonen.",
+    support_title: "Atención al Cliente y Comunicación",
+    support_text: "Experiencia en gestión de clientes, comunicación técnica clara y documentación de proyectos en Notion.",
     rights: "Todos los derechos reservados"
   },
   fr: {
@@ -51,14 +51,12 @@ const translations = {
 
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   const lang = e.target.value;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
+  const dict = translations[lang];
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
+    if (dict[key]) {
+      el.textContent = dict[key];
     }
   });
 });
-
-// Init with English
-document.getElementById("lang-switcher").value = "en";
-document.getElementById("lang-switcher").dispatchEvent(new Event("change"));
