@@ -5,134 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🔥 Portfolio Shonen Style 🔥</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
-      color: #f9c74f;
-      font-family: 'Bebas Neue', sans-serif;
-      overflow-x: hidden;
-    }
-    header {
-      padding: 2rem;
-      text-align: center;
-      font-size: 3rem;
-      letter-spacing: 4px;
-      position: relative;
-      animation: fireGlow 2s infinite alternate ease-in-out;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      animation: fadeIn 2s ease-out;
-    }
-    nav a {
-      color: #f9c74f;
-      text-decoration: none;
-      font-size: 1.5rem;
-      padding: 0.5rem 1rem;
-      border: 2px solid #f9c74f;
-      border-radius: 8px;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    nav a:hover {
-      background-color: #f9c74f;
-      color: #0f0f0f;
-      box-shadow: 0 0 20px 10px rgba(249, 199, 79, 0.5);
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      animation: fadeIn 1.5s ease forwards;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ffbe0b;
-    }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-    .card {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #2a2a2a;
-      border-left: 5px solid #f9c74f;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.02);
-      opacity: 0.95;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: 4rem;
-      font-size: 1rem;
-      color: #999;
-    }
-
-    /* 🔥 Animations 🔥 */
-    @keyframes fireGlow {
-      from { text-shadow: 0 0 10px #ffbe0b, 0 0 20px #f9c74f; }
-      to { text-shadow: 0 0 20px #ff6f00, 0 0 40px #f9c74f; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div>🔥 MON PORTFOLIO 🔥</div>
+    <div>🔥 <span data-i18n="title">MY PORTFOLIO</span> 🔥</div>
+    <div id="language-selector">
+      <select id="lang-switcher">
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="fr">🇫🇷 FR</option>
+      </select>
+    </div>
   </header>
+
   <nav>
-    <a href="#scraping">Scraping</a>
-    <a href="#dev">Développement</a>
-    <a href="#ux">UX/UI</a>
-    <a href="#support">Customer Success</a>
+    <a href="#scraping" data-i18n="nav_scraping">Scraping</a>
+    <a href="#dev" data-i18n="nav_dev">Development</a>
+    <a href="#ux" data-i18n="nav_ux">UX/UI</a>
+    <a href="#support" data-i18n="nav_support">Customer Success</a>
   </nav>
 
   <section id="scraping">
-    <h2>Scraping & Automatisation</h2>
+    <h2 data-i18n="scraping_title">Scraping & Automation</h2>
     <div class="card">
-      <p>Utilisation de Playwright, Selenium, CloudScraper, BeautifulSoup et intégration avec Notion & n8n. Réalisations testées dans GitHub Codespace, Google Colab et Docker.</p>
+      <p data-i18n="scraping_text">
+        Using Playwright, Selenium, CloudScraper, BeautifulSoup with Notion & n8n integration. Tested in GitHub Codespace, Google Colab, and Docker.
+      </p>
     </div>
   </section>
 
   <section id="dev">
-    <h2>Développement Web & Logiciel</h2>
+    <h2 data-i18n="dev_title">Web & Software Development</h2>
     <div class="card">
-      <p>Conception de projets web avec Flask, Notion API, GitHub Actions. Expérience dans l'automatisation de workflows, déploiement via GitHub Pages & Codespace.</p>
+      <p data-i18n="dev_text">
+        Web project design with Flask, Notion API, GitHub Actions. Experience in workflow automation and deployment via GitHub Pages & Codespace.
+      </p>
     </div>
   </section>
 
   <section id="ux">
-    <h2>UX/UI & Design</h2>
+    <h2 data-i18n="ux_title">UX/UI & Design</h2>
     <div class="card">
-      <p>Projets conçus dans Figma, intégration de principes UX pour améliorer l'expérience utilisateur. Style visuel influencé par la japanimation et l'univers shonen.</p>
+      <p data-i18n="ux_text">
+        Projects designed in Figma, integrating UX principles for improved experience. Visual style influenced by Japanimation and the shonen universe.
+      </p>
     </div>
   </section>
 
   <section id="support">
-    <h2>Customer Success & Communication</h2>
+    <h2 data-i18n="support_title">Customer Success & Communication</h2>
     <div class="card">
-      <p>Expérience dans la gestion de clients, communication technique claire, et documentation des projets sur Notion. Forte capacité à accompagner un projet jusqu’à sa réussite.</p>
+      <p data-i18n="support_text">
+        Experience in client management, clear technical communication, and project documentation in Notion. Strong ability to see projects through to success.
+      </p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Sylvain Thobor — Tous droits réservés</p>
+    <p>© 2025 Sylvain Thobor — <span data-i18n="rights">All rights reserved</span></p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
