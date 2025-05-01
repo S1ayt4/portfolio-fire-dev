@@ -68,6 +68,10 @@ section {
   max-width: 1200px;
   margin: auto;
   animation: fadeIn 1.5s ease forwards;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center; /* Centrer le texte dans chaque section */
 }
 
 h2 {
@@ -79,6 +83,8 @@ h2 {
 p {
   font-size: 1.2rem;
   line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Bloc de carte */
@@ -92,6 +98,7 @@ p {
   margin-right: 2%; /* Espacement entre les cartes */
   margin-bottom: 2%; /* Espacement entre les lignes */
   display: inline-block;
+  box-sizing: border-box;
 }
 
 .card:hover {
@@ -144,6 +151,8 @@ footer {
   section {
     padding: 1rem;
     margin: 1rem;
+    flex-direction: column; /* Les sections seront en une seule colonne sur mobile */
+    text-align: center; /* Centrer le texte sur mobile */
   }
 
   h2 {
@@ -185,6 +194,8 @@ footer {
   section {
     padding: 1.5rem;
     margin: 2rem;
+    flex-wrap: wrap;
+    text-align: center; /* Centrer le texte */
   }
 
   h2 {
@@ -222,6 +233,8 @@ footer {
   section {
     padding: 2rem;
     margin: 3rem;
+    flex-wrap: wrap;
+    text-align: center; /* Centrer le texte */
   }
 
   h2 {
@@ -236,7 +249,7 @@ footer {
     font-size: 1rem;
   }
 
-  /* Disposition des cartes sur grand écran : 4 colonnes sur une seule ligne */
+  /* Disposition des cartes sur grand écran : 4 colonnes */
   .card {
     width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
     margin-right: 2%; /* Espacement entre les cartes */
