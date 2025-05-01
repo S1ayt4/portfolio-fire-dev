@@ -75,7 +75,7 @@ function initFireEffect() {
   // Créer un rendu WebGL
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  document.body.appendChild(renderer.domElement);  // Ajout du rendu au body
 
   // Créer des particules
   const particleGeometry = new THREE.BufferGeometry();
@@ -119,8 +119,3 @@ function animate() {
   particleSystem.rotation.y += 0.01;
 
   // Mettre à jour le rendu
-  renderer.render(scene, camera);
-}
-
-// Initialiser l'effet de feu 3D
-initFireEffect();
