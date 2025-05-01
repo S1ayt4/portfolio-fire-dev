@@ -1,69 +1,4 @@
-const translations = {
-  en: {
-    title: "MY PORTFOLIO",
-    nav_scraping: "Scraping",
-    nav_dev: "Development",
-    nav_ux: "UX/UI",
-    nav_support: "Customer Success",
-    scraping_title: "Scraping & Automation",
-    scraping_text: "Using Playwright, Selenium, CloudScraper, BeautifulSoup with Notion & n8n integration. Tested in GitHub Codespace, Google Colab, and Docker.",
-    dev_title: "Web & Software Development",
-    dev_text: "Web project design with Flask, Notion API, GitHub Actions. Experience in workflow automation and deployment via GitHub Pages & Codespace.",
-    ux_title: "UX/UI & Design",
-    ux_text: "Projects designed in Figma, integrating UX principles for improved experience. Visual style influenced by Japanimation and the shonen universe.",
-    support_title: "Customer Success & Communication",
-    support_text: "Experience in client management, clear technical communication, and project documentation in Notion. Strong ability to see projects through to success.",
-    rights: "All rights reserved"
-  },
-  es: {
-    title: "MI PORTAFOLIO",
-    nav_scraping: "Scraping",
-    nav_dev: "Desarrollo",
-    nav_ux: "UX/UI",
-    nav_support: "Atención al Cliente",
-    scraping_title: "Scraping y Automatización",
-    scraping_text: "Uso de Playwright, Selenium, CloudScraper, BeautifulSoup e integración con Notion & n8n. Probado en GitHub Codespace, Google Colab y Docker.",
-    dev_title: "Desarrollo Web y de Software",
-    dev_text: "Diseño de proyectos web con Flask, Notion API, GitHub Actions. Experiencia en automatización de flujos de trabajo y despliegue vía GitHub Pages & Codespace.",
-    ux_title: "UX/UI y Diseño",
-    ux_text: "Proyectos diseñados en Figma, integrando principios de UX para mejorar la experiencia. Estilo visual influenciado por la animación japonesa y el universo shonen.",
-    support_title: "Atención al Cliente y Comunicación",
-    support_text: "Experiencia en gestión de clientes, comunicación técnica clara y documentación de proyectos en Notion.",
-    rights: "Todos los derechos reservados"
-  },
-  fr: {
-    title: "MON PORTFOLIO",
-    nav_scraping: "Scraping",
-    nav_dev: "Développement",
-    nav_ux: "UX/UI",
-    nav_support: "Customer Success",
-    scraping_title: "Scraping & Automatisation",
-    scraping_text: "Utilisation de Playwright, Selenium, CloudScraper, BeautifulSoup et intégration avec Notion & n8n. Réalisations testées dans GitHub Codespace, Google Colab et Docker.",
-    dev_title: "Développement Web & Logiciel",
-    dev_text: "Conception de projets web avec Flask, Notion API, GitHub Actions. Expérience dans l'automatisation de workflows, déploiement via GitHub Pages & Codespace.",
-    ux_title: "UX/UI & Design",
-    ux_text: "Projets conçus dans Figma, intégration de principes UX pour améliorer l'expérience utilisateur. Style visuel influencé par la japanimation et l'univers shonen.",
-    support_title: "Customer Success & Communication",
-    support_text: "Expérience dans la gestion de clients, communication technique claire, et documentation des projets sur Notion. Forte capacité à accompagner un projet jusqu’à sa réussite.",
-    rights: "Tous droits réservés"
-  }
-};
-
-// Code de changement de langue (inchangé)
-document.getElementById("lang-switcher").addEventListener("change", (e) => {
-  const lang = e.target.value;
-  const dict = translations[lang];
-
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key]) {
-      el.textContent = dict[key];
-    }
-  });
-});
-
-// Ajout du code Three.js pour l'effet de feu 3D
-let scene, camera, renderer, particles, particleSystem;
+let scene, camera, renderer, particleSystem, fireTexture;
 
 function initFireEffect() {
   // Créer une scène
@@ -77,34 +12,44 @@ function initFireEffect() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);  // Ajout du rendu au body
 
-  // Créer des particules
-  const particleGeometry = new THREE.BufferGeometry();
-  const particleCount = 1000;
-  const positions = [];
-  const colors = [];
+  // Charger une texture pour les particules de feu
+  const textureLoader = new THREE.TextureLoader();
+  fireTexture = textureLoader.load('https://www.transparenttextures.com/patterns/fire.png'); // Texture de flamme simple
 
-  // Définir les positions et couleurs des particules
-  for (let i = 0; i < particleCount; i++) {
-    positions.push(Math.random() * 2 - 1); // X
-    positions.push(Math.random() * 2 - 1); // Y
-    positions.push(Math.random() * 2 - 1); // Z
-
-    colors.push(Math.random(), Math.random(), Math.random()); // Couleurs RGB
-  }
-
-  particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  particleGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-  // Matériau des particules (feu)
-  const particleMaterial = new THREE.PointsMaterial({
-    size: 0.05,
-    vertexColors: true
+  // Créer un matériau pour les particules de feu
+  const fireMaterial = new THREE.PointsMaterial({
+    size: 0.15,
+    map: fireTexture,
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,  // Empêcher l'écriture dans le z-buffer pour éviter des artefacts visuels
   });
 
-  particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+  // Créer des particules pour simuler le feu
+  const fireGeometry = new THREE.BufferGeometry();
+  const particleCount = 500; // Nombre de particules pour la flamme
+  const positions = [];
+  const velocities = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    // Position des particules dans une zone en bas de la scène
+    positions.push((Math.random() - 0.5) * 2);  // X
+    positions.push(Math.random() * 2);           // Y (particules au bas de la scène)
+    positions.push((Math.random() - 0.5) * 2);  // Z
+
+    // Vitesse de chaque particule (elles montent légèrement pour simuler un feu)
+    velocities.push(0);
+    velocities.push(Math.random() * 0.05 + 0.02); // Vitesse verticale (montée du feu)
+    velocities.push(0);
+  }
+
+  fireGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+
+  // Création du système de particules
+  particleSystem = new THREE.Points(fireGeometry, fireMaterial);
   scene.add(particleSystem);
 
-  // Positionner la caméra
+  // Positionner la caméra pour voir l'effet du feu
   camera.position.z = 5;
 
   // Animer la scène
@@ -114,8 +59,25 @@ function initFireEffect() {
 function animate() {
   requestAnimationFrame(animate);
 
-  // Animer les particules pour simuler un feu
-  particleSystem.rotation.x += 0.01;
-  particleSystem.rotation.y += 0.01;
+  // Mettre à jour la position des particules pour simuler le mouvement du feu
+  const positions = particleSystem.geometry.attributes.position.array;
+  const velocities = particleSystem.geometry.attributes.velocity ? particleSystem.geometry.attributes.velocity.array : [];
 
-  // Mettre à jour le rendu
+  for (let i = 0; i < positions.length; i += 3) {
+    // Bouger les particules vers le haut pour simuler l'ascension du feu
+    positions[i + 1] += velocities[i + 1];
+
+    // Si la particule dépasse le plafond, la remettre en bas pour recommencer
+    if (positions[i + 1] > 2) {
+      positions[i + 1] = Math.random() * 2; // Remettre la particule en bas
+    }
+  }
+
+  particleSystem.geometry.attributes.position.needsUpdate = true;
+
+  // Animer la scène avec une mise à jour du rendu
+  renderer.render(scene, camera);
+}
+
+// Initialiser l'effet de feu
+initFireEffect();
