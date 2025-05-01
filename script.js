@@ -49,6 +49,7 @@ const translations = {
   }
 };
 
+// Code de changement de langue (inchangé)
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   const lang = e.target.value;
   const dict = translations[lang];
@@ -60,3 +61,66 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
     }
   });
 });
+
+// Ajout du code Three.js pour l'effet de feu 3D
+let scene, camera, renderer, particles, particleSystem;
+
+function initFireEffect() {
+  // Créer une scène
+  scene = new THREE.Scene();
+
+  // Créer une caméra
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+  // Créer un rendu WebGL
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Créer des particules
+  const particleGeometry = new THREE.BufferGeometry();
+  const particleCount = 1000;
+  const positions = [];
+  const colors = [];
+
+  // Définir les positions et couleurs des particules
+  for (let i = 0; i < particleCount; i++) {
+    positions.push(Math.random() * 2 - 1); // X
+    positions.push(Math.random() * 2 - 1); // Y
+    positions.push(Math.random() * 2 - 1); // Z
+
+    colors.push(Math.random(), Math.random(), Math.random()); // Couleurs RGB
+  }
+
+  particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  particleGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  // Matériau des particules (feu)
+  const particleMaterial = new THREE.PointsMaterial({
+    size: 0.05,
+    vertexColors: true
+  });
+
+  particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+  scene.add(particleSystem);
+
+  // Positionner la caméra
+  camera.position.z = 5;
+
+  // Animer la scène
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Animer les particules pour simuler un feu
+  particleSystem.rotation.x += 0.01;
+  particleSystem.rotation.y += 0.01;
+
+  // Mettre à jour le rendu
+  renderer.render(scene, camera);
+}
+
+// Initialiser l'effet de feu 3D
+initFireEffect();
