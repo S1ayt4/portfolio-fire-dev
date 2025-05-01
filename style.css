@@ -62,10 +62,10 @@ nav a:hover {
   box-shadow: 0 0 20px 10px rgba(249, 199, 79, 0.5);
 }
 
-/* Sections */
+/* Portfolio Section */
 section {
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
   animation: fadeIn 1.5s ease forwards;
 }
@@ -81,12 +81,17 @@ p {
   line-height: 1.6;
 }
 
+/* Bloc de carte */
 .card {
   margin-top: 1rem;
   padding: 1rem;
   background: #2a2a2a;
   border-left: 5px solid #f9c74f;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
+  margin-right: 2%; /* Espacement entre les cartes */
+  margin-bottom: 2%; /* Espacement entre les lignes */
+  display: inline-block;
 }
 
 .card:hover {
@@ -119,7 +124,7 @@ footer {
 /* Mobile */
 @media (max-width: 767px) {
   body {
-    font-size: 14px; /* Ajuster la taille de police pour les petits écrans */
+    font-size: 14px;
   }
 
   header {
@@ -151,6 +156,13 @@ footer {
 
   footer {
     font-size: 0.9rem;
+  }
+
+  /* Disposition des cartes sur mobile : une seule colonne */
+  .card {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -186,6 +198,14 @@ footer {
   footer {
     font-size: 1rem;
   }
+
+  /* Disposition des cartes sur tablette : 2 colonnes */
+  .card {
+    width: 48%; /* Deux cartes par ligne */
+    display: inline-block;
+    margin-right: 4%; /* Plus d'espace entre les blocs */
+    margin-bottom: 2rem;
+  }
 }
 
 /* Grand écran (plus de 1024px) */
@@ -214,5 +234,12 @@ footer {
 
   footer {
     font-size: 1rem;
+  }
+
+  /* Disposition des cartes sur grand écran : 4 colonnes sur une seule ligne */
+  .card {
+    width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
+    margin-right: 2%; /* Espacement entre les cartes */
+    margin-bottom: 2%; /* Espacement entre les lignes */
   }
 }
