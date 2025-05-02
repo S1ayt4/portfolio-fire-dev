@@ -112,8 +112,8 @@ body {
   right: 10px;
   max-width: 200px;
   padding: 0.2rem 0.4rem;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
+  background: var(--nav-bg); /* ou rgba(0, 0, 0, 0.7); */
+  backdrop-filter: none; /* 🔁 désactive le flou */
   border: 1px solid var(--border-color);
   border-radius: 8px;
   z-index: 999;
