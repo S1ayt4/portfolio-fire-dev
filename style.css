@@ -156,6 +156,12 @@ p {
   p, .card p { font-size: 1rem; }
   .custom-footer { font-size: 0.9rem; }
   .card { width: 100%; margin-bottom: 1.5rem; }
+
+  /* Sélecteur de langue en mode portrait */
+  #language-selector {
+    top: 2rem;  /* Déplace encore plus haut */
+    right: 2rem; /* Réduit légèrement la distance à droite */
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
