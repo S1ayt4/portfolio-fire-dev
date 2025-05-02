@@ -160,14 +160,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleParallax() {
     const scrollY = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const backgroundHeight = document.body.scrollHeight;
+    const documentHeight = document.body.scrollHeight;
+    const windowHeight = window.innerHeight;
 
-    const maxBgMove = backgroundHeight - window.innerHeight;
-    const scrollRatio = maxScroll ? scrollY / maxScroll : 0;
+    // Calcul de la distance de défilement par rapport au contenu total
+    const scrollPercent = (scrollY / (documentHeight - windowHeight));
 
-    const backgroundPositionY = scrollRatio * maxBgMove;
-    document.body.style.backgroundPosition = `center -${backgroundPositionY}px`;
+    // Calcul du décalage de l'image de fond avec un facteur de synchronisation
+    const maxOffset = windowHeight * 0.5; // Ajuster ce facteur pour changer la vitesse du fond
+    const offset = scrollPercent * maxOffset;
+
+    // Mise à jour de la position du fond
+    document.body.style.backgroundPosition = `center ${-offset}px`;
   }
 
   function updateParallaxListeners() {
