@@ -200,11 +200,23 @@ p, .card p {
 
 /* 📱 Responsive mobile */
 @media (max-width: 600px) {
-  body { font-size: 14px; }
+  body {
+    font-size: 14px;
+  }
 
-  .custom-header { font-size: 2rem; }
-  nav { flex-direction: column; gap: 1rem; }
-  nav a { font-size: 1.2rem; }
+  .custom-header {
+    font-size: 2rem;
+    padding-top: 4rem; /* Espace pour boutons fixés en haut */
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 1.2rem;
+  }
 
   section {
     padding: 1rem;
@@ -212,10 +224,17 @@ p, .card p {
     text-align: center;
   }
 
-  h2 { font-size: 1.5rem; }
-  p, .card p { font-size: 1rem; }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-  .custom-footer { font-size: 0.9rem; }
+  p, .card p {
+    font-size: 1rem;
+  }
+
+  .custom-footer {
+    font-size: 0.9rem;
+  }
 
   .header-content {
     flex-direction: column;
@@ -223,16 +242,37 @@ p, .card p {
     gap: 0.5rem;
   }
 
-  #lang-switcher, #theme-toggle {
-    font-size: 0.8rem;
-    padding: 0.3rem;
-    position: static;
+  /* 🔊 Audio en haut à gauche */
+  #audio-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 1.4rem;
   }
 
+  /* 🌐 Langue et thème empilés à droite */
   #language-selector,
   #theme-toggle-container {
-    margin-left: 0;
-    margin-bottom: 0.5rem;
+    position: fixed;
+    right: 10px;
+    width: 110px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    z-index: 999;
+  }
+
+  #language-selector { top: 10px; }
+  #theme-toggle-container { top: 55px; }
+
+  #lang-switcher,
+  #theme-toggle {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 5px;
   }
 }
 
@@ -244,7 +284,6 @@ p, .card p {
   section { padding: 1.5rem; margin: 1.5rem; }
   h2 { font-size: 1.7rem; }
   p, .card p { font-size: 1.1rem; }
-
   .card {
     width: 90%;
     margin: 1rem auto;
