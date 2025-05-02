@@ -5,6 +5,27 @@
   box-sizing: border-box;
 }
 
+/* Variables CSS thème sombre par défaut */
+:root {
+  --text-color: #f9c74f;
+  --bg-color: #0f0f0f;
+  --card-bg: rgba(0, 0, 0, 0.6);
+  --heading-color: #ffbe0b;
+  --nav-bg: rgba(0, 0, 0, 0.7);
+  --border-color: #f9c74f;
+}
+
+/* Variables thème clair */
+body.light-theme {
+  --text-color: #222;
+  --bg-color: #f5f5f5;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --heading-color: #e76f51;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --border-color: #e76f51;
+  background-image: none;
+}
+
 /* Style général */
 html, body {
   height: 100%;
@@ -15,22 +36,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  color: #f9c74f;
+  color: var(--text-color);
   overflow-x: hidden;
   position: relative;
 
+  background-color: var(--bg-color);
   background-image: url('assets/images/flamme.png');
   background-repeat: no-repeat;
-  background-size: auto 100%; /* Ajuste l'image en hauteur de manière dynamique */
-  background-position: center top; /* Positionne l'image en haut au départ */
-  background-attachment: fixed; /* Empêche l'image de se déplacer pendant le scroll */
-  
-  background-color: #0f0f0f; /* fallback */
-  transition: background-position 0.2s ease;
+  background-size: auto 100%;
+  background-position: center top;
+  background-attachment: fixed;
+
+  transition: background-position 0.2s ease, background-color 0.3s ease;
   min-height: 100vh;
 }
-
-
 
 /* Footer */
 .custom-footer {
@@ -50,7 +69,7 @@ body {
 
 /* Titre avec fond translucide */
 .translucent-title {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 0.5rem 1.5rem;
@@ -63,58 +82,72 @@ nav {
   gap: 2rem;
   margin-bottom: 2rem;
   animation: fadeIn 2s ease-out;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--nav-bg);
   padding: 1rem;
   border-radius: 8px;
 }
 
 nav a {
-  color: #f9c74f;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #f9c74f;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   transition: all 0.4s ease;
 }
 
 nav a:hover {
-  background-color: #f9c74f;
-  color: #0f0f0f;
+  background-color: var(--border-color);
+  color: var(--bg-color);
   box-shadow: 0 0 20px 10px rgba(249, 199, 79, 0.5);
 }
 
-#lang-switcher {
+/* Langue & audio & thème */
+#audio-toggle,
+#lang-switcher,
+#theme-toggle {
   position: absolute;
   top: 10px;
-  right: 10px;
   font-size: 1rem;
-  background: none;
-  border: 2px solid #f9c74f;
-  color: #f9c74f;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
+#audio-toggle {
+  left: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
+#lang-switcher {
+  right: 10px;
+}
+
+#theme-toggle {
+  right: 90px;
+}
 
 /* Titres de sections */
 h2 {
   font-size: 2rem;
   margin-bottom: 0.3rem;
-  color: #ffbe0b;
-  background: rgba(0, 0, 0, 0.6);
+  color: var(--heading-color);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 0.3rem 0.8rem;
   display: inline-block;
   text-align: left;
-  border-left: 4px solid #ffbe0b;
+  border-left: 4px solid var(--heading-color);
   box-shadow: 2px 2px 8px rgba(255, 190, 11, 0.2);
 }
-
 
 /* Paragraphes */
 p, .card p {
@@ -122,8 +155,8 @@ p, .card p {
   line-height: 1.6;
   max-width: 900px;
   margin: 0 auto;
-  color: #f9c74f;
-  background: rgba(0, 0, 0, 0.6);
+  color: var(--text-color);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 1rem;
@@ -131,17 +164,17 @@ p, .card p {
 }
 
 .card p {
-  border-left: 4px solid #f9c74f;
-  border-right: 4px solid #f9c74f;
+  border-left: 4px solid var(--border-color);
+  border-right: 4px solid var(--border-color);
 }
 
-/* Texte du pied de page */
+/* Footer texte */
 .translucent-footer {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
   color: silver;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--card-bg);
   backdrop-filter: blur(5px);
   border-radius: 10px;
 }
@@ -157,7 +190,7 @@ p, .card p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries */
+/* Responsive */
 @media (max-width: 767px) {
   body { font-size: 14px; }
   .custom-header { font-size: 2rem; }
@@ -179,18 +212,4 @@ p, .card p {
   p, .card p { font-size: 1.1rem; }
   .custom-footer { font-size: 1rem; }
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
-}
-
-/* Pas besoin de background-attachment ni contain ici */
-
-#audio-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: #f9c74f;
-  cursor: pointer;
-  z-index: 999;
 }
