@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-image: url('assets/images/flamme.png'); /* Ajoutez l'image de fond */
+  background-size: cover; /* L'image couvre tout l'écran */
+  background-position: bottom center; /* L'image sera positionnée en bas au centre */
+  background-attachment: fixed; /* Rendre l'image fixe pendant le défilement */
 }
 
 /* Header */
@@ -133,7 +137,8 @@ footer {
   body {
     font-size: 14px;
     background-size: cover; /* L'image couvre tout l'écran */
-    background-position: bottom center; /* L'image sera ancrée en bas */
+    background-position: bottom center; /* Positionner l'image en bas */
+    background-attachment: fixed; /* L'image reste fixe pendant le défilement */
   }
 
   header {
