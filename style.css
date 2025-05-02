@@ -99,46 +99,43 @@ body {
   box-shadow: 0 0 15px 5px rgba(249, 199, 79, 0.5);
 }
 
-/* 🎚 Contrôles */
-#audio-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-  z-index: 999;
-}
-
-/* ✅ SUPPRESSION DES STYLES CONFLICTUELS */
+/* 🎚 Contrôles alignés visuellement avec les liens de navigation */
 #lang-switcher,
 #theme-toggle {
-  all: unset;
-  display: inline-block;
-  width: 100%;
+  font-size: 1.2rem;
+  font-family: inherit;
+  color: var(--text-color);
+  background-color: var(--nav-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  appearance: none;
   text-align: center;
-  z-index: 999;
+  transition: all 0.4s ease;
+  box-shadow: none;
+
+  /* ✅ Flèche personnalisée */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23f9c74f'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.65rem;
+  padding-right: 2rem;
 }
 
-#lang-switcher.btn-like-nav,
-#theme-toggle.btn-like-nav {
-  display: inline-block;
-  width: 100%;
+#lang-switcher:hover,
+#theme-toggle:hover {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px 5px rgba(249, 199, 79, 0.5);
 }
 
-/* ✅ CONTENEURS FIXES */
+/* ✅ Conteneurs fixés */
 #language-selector,
 #theme-toggle-container {
   position: fixed;
   right: 10px;
   z-index: 999;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
 }
 
 #language-selector { top: 10px; }
@@ -262,11 +259,6 @@ p, .card p {
   }
 
   #audio-toggle { font-size: 1.4rem; }
-
-  #lang-switcher,
-  #theme-toggle {
-    font-size: 0.8rem;
-  }
 }
 
 /* 📱 Responsive tablette */
