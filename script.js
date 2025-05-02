@@ -161,10 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleParallax() {
     const scrollY = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = maxScroll ? scrollY / maxScroll : 0;
+    const backgroundHeight = document.body.scrollHeight;
 
-    const positionY = scrollPercent * 100;
-    document.body.style.backgroundPosition = `center ${positionY}%`;
+    const maxBgMove = backgroundHeight - window.innerHeight;
+    const scrollRatio = maxScroll ? scrollY / maxScroll : 0;
+
+    const backgroundPositionY = scrollRatio * maxBgMove;
+    document.body.style.backgroundPosition = `center -${backgroundPositionY}px`;
   }
 
   function updateParallaxListeners() {
