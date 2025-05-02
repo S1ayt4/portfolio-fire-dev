@@ -62,3 +62,14 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
     }
   });
 });
+
+// Parallax Scrolling - Ajuste l'image de fond lors du scroll
+window.addEventListener("scroll", function() {
+  var scrollPosition = window.scrollY;  // Position actuelle du scroll
+  var maxScroll = document.body.scrollHeight - window.innerHeight;  // Hauteur maximale de scroll
+  var scrollPercent = scrollPosition / maxScroll;  // Calcul du pourcentage de scroll
+  var offset = scrollPercent * 100;  // Déplacement de l'image selon le scroll
+
+  // Ajuste la position de l'image de fond pour faire défiler le personnage du haut vers le bas
+  document.body.style.backgroundPosition = "center " + (50 - offset) + "%";  // "50%" est la position initiale
+});
