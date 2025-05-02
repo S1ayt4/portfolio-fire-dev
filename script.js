@@ -90,3 +90,25 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", updateParallaxListeners);
   updateParallaxListeners();
 });
+
+// 🎨 Thème clair/sombre
+const themeSelect = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  if (theme === "light") {
+    document.body.classList.add("light-theme");
+  } else {
+    document.body.classList.remove("light-theme");
+  }
+}
+
+themeSelect.addEventListener("change", (e) => {
+  const theme = e.target.value;
+  localStorage.setItem("theme", theme);
+  applyTheme(theme);
+});
+
+// Appliquer le thème au chargement
+const savedTheme = localStorage.getItem("theme") || "dark";
+themeSelect.value = savedTheme;
+applyTheme(savedTheme);
