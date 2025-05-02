@@ -255,7 +255,7 @@ p, .card p {
   #theme-toggle-container {
     position: fixed;
     right: 10px;
-    width: 110px;
+    width: 55px;
     background: var(--card-bg);
     border-radius: 5px;
     z-index: 999;
