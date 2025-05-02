@@ -1,4 +1,4 @@
-// Traductions
+// === Traductions ===
 const translations = {
   en: {
     title: "MY PORTFOLIO",
@@ -50,7 +50,7 @@ const translations = {
   }
 };
 
-// Code de changement de langue
+// === Changement de langue ===
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   const lang = e.target.value;
   const dict = translations[lang];
@@ -62,3 +62,39 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
     }
   });
 });
+
+// === Parallax doux sur mobile uniquement ===
+function handleParallax() {
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    const scrollPosition = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollPosition / maxScroll;
+
+    const min = 48;
+    const max = 52;
+    const offset = min + (max - min) * scrollPercent;
+
+    document.body.style.backgroundPosition = `center ${offset}%`;
+  } else {
+    document.body.style.backgroundPosition = "center center";
+  }
+}
+
+function updateParallaxListeners() {
+  const isMobile = window.innerWidth <= 768;
+
+  window.removeEventListener("scroll", handleParallax);
+
+  if (isMobile) {
+    window.addEventListener("scroll", handleParallax);
+  }
+
+  // Réinitialise ou applique immédiatement
+  handleParallax();
+}
+
+// Initialisation
+window.addEventListener("resize", updateParallaxListeners);
+document.addEventListener("DOMContentLoaded", updateParallaxListeners);

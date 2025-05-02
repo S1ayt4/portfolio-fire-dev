@@ -1,4 +1,19 @@
-/* Style général */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-footer {
+  margin-top: auto;
+}
+
+
+
+/* Général */
 * {
   margin: 0;
   padding: 0;
@@ -10,12 +25,17 @@ body {
   color: #f9c74f;
   font-family: 'Bebas Neue', sans-serif;
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  background-image: url('assets/images/flamme.png');
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* Header */
-header {
+/* En-tête */
+.custom-header {
   padding: 2rem;
   text-align: center;
   font-size: 3rem;
@@ -24,16 +44,12 @@ header {
   animation: fireGlow 2s infinite alternate ease-in-out;
 }
 
-#language-selector {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-}
-
-#lang-switcher {
-  font-size: 1rem;
-  padding: 0.3rem;
-  border-radius: 6px;
+/* Titre My Portfolio avec fond translucide */
+.translucent-title {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
 }
 
 /* Navbar */
@@ -43,6 +59,9 @@ nav {
   gap: 2rem;
   margin-bottom: 2rem;
   animation: fadeIn 2s ease-out;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 nav a {
@@ -53,7 +72,6 @@ nav a {
   border: 2px solid #f9c74f;
   border-radius: 8px;
   transition: all 0.4s ease;
-  position: relative;
 }
 
 nav a:hover {
@@ -62,60 +80,61 @@ nav a:hover {
   box-shadow: 0 0 20px 10px rgba(249, 199, 79, 0.5);
 }
 
-/* Portfolio Section */
-section {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-  animation: fadeIn 1.5s ease forwards;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center; /* Centrer le texte dans chaque section */
-}
-
+/* Titres de section */
 h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #ffbe0b;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  display: inline-block;
 }
 
+/* Paragraphes */
 p {
   font-size: 1.2rem;
   line-height: 1.6;
   max-width: 900px;
   margin: 0 auto;
+  color: #f9c74f;
 }
 
-/* Bloc de carte */
-.card {
-  margin-top: 1rem;
+/* Paragraphes dans les cartes avec bordures latérales */
+.card p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #f9c74f;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-left: 4px solid #f9c74f;
+  border-right: 4px solid #f9c74f;
+  border-radius: 10px;
   padding: 1rem;
-  background: #2a2a2a;
-  border-left: 5px solid #f9c74f;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
-  margin-right: 2%; /* Espacement entre les cartes */
-  margin-bottom: 2%; /* Espacement entre les lignes */
-  display: inline-block;
-  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
 }
 
-.card:hover {
-  transform: scale(1.02);
-  opacity: 0.95;
-}
-
-/* Footer */
-footer {
+/* Pied de page */
+.custom-footer {
   text-align: center;
-  padding: 1rem;
   margin-top: 4rem;
-  font-size: 1rem;
-  color: #999;
 }
 
-/* 🔥 Animations 🔥 */
+/* Texte du pied de page avec style translucide + couleur argent */
+.translucent-footer {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: silver;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+/* Animations */
 @keyframes fireGlow {
   from { text-shadow: 0 0 10px #ffbe0b, 0 0 20px #f9c74f; }
   to { text-shadow: 0 0 20px #ff6f00, 0 0 40px #f9c74f; }
@@ -126,133 +145,54 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries pour les écrans plus petits */
-
-/* Mobile */
+/* Responsive : mobile, tablette, desktop */
 @media (max-width: 767px) {
-  body {
-    font-size: 14px;
-  }
-
-  header {
-    font-size: 2rem;
-  }
-
-  nav {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  nav a {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  section {
-    padding: 1rem;
-    margin: 1rem;
-    flex-direction: column; /* Les sections seront en une seule colonne sur mobile */
-    text-align: center; /* Centrer le texte sur mobile */
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  footer {
-    font-size: 0.9rem;
-  }
-
-  /* Disposition des cartes sur mobile : une seule colonne */
-  .card {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 1.5rem;
-  }
+  body { font-size: 14px; }
+  .custom-header { font-size: 2rem; }
+  nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+  nav a { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+  section { padding: 1rem; margin: 1rem; text-align: center; }
+  h2 { font-size: 1.5rem; }
+  p, .card p { font-size: 1rem; }
+  .custom-footer { font-size: 0.9rem; }
+  .card { width: 100%; margin-bottom: 1.5rem; }
 }
 
-/* Tablette (768px à 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  header {
-    font-size: 2.5rem;
+  .custom-header { font-size: 2.5rem; }
+  nav { gap: 1.5rem; }
+  nav a { font-size: 1.4rem; }
+  section { padding: 1.5rem; margin: 2rem; }
+  h2 { font-size: 1.8rem; }
+  p, .card p { font-size: 1.1rem; }
+  .custom-footer { font-size: 1rem; }
+  .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
+}
+
+/* Mode paysage */
+@media (orientation: landscape) {
+  body {
+    background-position: center center;
+    background-attachment: initial;
   }
 
-  nav {
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  nav a {
-    font-size: 1.4rem;
-  }
-
-  section {
-    padding: 1.5rem;
-    margin: 2rem;
-    flex-wrap: wrap;
-    text-align: center; /* Centrer le texte */
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-  }
-
-  footer {
-    font-size: 1rem;
-  }
-
-  /* Disposition des cartes sur tablette : 2 colonnes */
-  .card {
-    width: 48%; /* Deux cartes par ligne */
-    display: inline-block;
-    margin-right: 4%; /* Plus d'espace entre les blocs */
-    margin-bottom: 2rem;
+  .card p {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    border-left: 4px solid #f9c74f;
+    border-right: 4px solid #f9c74f;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
   }
 }
 
-/* Grand écran (plus de 1024px) */
-@media (min-width: 1024px) {
-  nav {
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  nav a {
-    font-size: 1.5rem;
-  }
-
-  section {
-    padding: 2rem;
-    margin: 3rem;
-    flex-wrap: wrap;
-    text-align: center; /* Centrer le texte */
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1.2rem;
-  }
-
-  footer {
-    font-size: 1rem;
-  }
-
-  /* Disposition des cartes sur grand écran : 4 colonnes */
-  .card {
-    width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
-    margin-right: 2%; /* Espacement entre les cartes */
-    margin-bottom: 2%; /* Espacement entre les lignes */
+/* Desktop : afficher toute l'image et désactiver effet */
+@media (min-width: 1025px) {
+  body {
+    background-size: contain;
+    background-position: center center;
+    background-attachment: initial;
+    background-repeat: no-repeat;
   }
 }
