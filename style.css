@@ -23,7 +23,7 @@ body.light-theme {
   --heading-color: #e76f51;
   --nav-bg: rgba(255, 255, 255, 0.8);
   --border-color: #e76f51;
-  background-image: none;
+  background-image: url('assets/images/flamme.png');
 }
 
 /* Style général */
