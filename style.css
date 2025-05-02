@@ -15,15 +15,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
   color: #f9c74f;
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
-  background-size: cover; /* Assurer que l'image couvre tout l'écran */
-  background-position: center center; /* Centrer l'image de fond */
-  background-repeat: no-repeat; /* Empêche la répétition de l'image */
-  min-height: 100vh; /* Prend au moins la hauteur de la fenêtre */
-  background-attachment: fixed; /* Effet parallax */
+  background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  transition: background-position 0.2s ease;
 }
 
 /* Footer */
@@ -133,7 +133,7 @@ p, .card p {
 
 /* Media Queries : Responsive */
 @media (max-width: 767px) {
-  body { font-size: 14px; background-attachment: scroll; }
+  body { font-size: 14px; }
   .custom-header { font-size: 2rem; }
   nav { flex-direction: column; gap: 1rem; padding: 1rem; }
   nav a { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
@@ -158,15 +158,18 @@ p, .card p {
 /* Mode paysage */
 @media (orientation: landscape) {
   body {
-    background-attachment: initial; /* Désactive parallax en mode paysage */
+    background-position: center center;
+    background-attachment: initial;
   }
 }
 
 /* Desktop : Ajustement pour les grands écrans */
 @media (min-width: 1025px) {
   body {
-    background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-position: center center;
+    background-attachment: initial;
+    background-repeat: no-repeat;
   }
 }
 
