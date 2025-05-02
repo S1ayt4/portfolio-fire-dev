@@ -41,8 +41,6 @@ header, nav, section, footer {
   box-sizing: border-box;
 }
 
-/* Media Queries pour les écrans plus petits */
-
 /* Mobile Portrait */
 @media (max-width: 767px) {
   body {
@@ -74,7 +72,9 @@ header, nav, section, footer {
 /* Mobile Landscape */
 @media (max-width: 767px) and (orientation: landscape) {
   body {
-    background-position: top center; /* Image de fond se déplace vers le haut pour le mode paysage */
+    background-position: top center; /* Positionner l'image pour voir la tête du personnage */
+    background-size: cover; /* Redimensionner l'image pour qu'elle couvre toute la largeur et hauteur de l'écran */
+    background-attachment: scroll; /* Permet à l'image de se déplacer avec le défilement */
   }
 }
 
