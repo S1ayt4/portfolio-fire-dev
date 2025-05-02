@@ -20,13 +20,13 @@ body {
 
   background-image: url('assets/images/flamme.png');
   background-repeat: no-repeat;
-  background-size: auto 100%; /* La hauteur de l’image = hauteur totale de la page */
-  background-position: center bottom; /* Position verticale ancrée en bas */
-  background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+  background-size: cover; /* L'image va couvrir toute la fenêtre, en remplissant toute la page */
+  background-position: bottom center; /* Ancrée en bas de la page */
+  background-attachment: fixed; /* L'image ne bouge pas pendant le scroll */
   
   background-color: #0f0f0f; /* fallback */
   transition: background-position 0.2s ease;
-  min-height: 100vh;
+  min-height: 100vh; /* Pour assurer que le corps prend au moins toute la hauteur de la fenêtre */
 }
 
 
