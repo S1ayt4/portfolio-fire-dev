@@ -111,6 +111,8 @@ h2 {
   padding: 0.3rem 0.8rem;
   display: inline-block;
   text-align: left;
+  border-left: 4px solid #ffbe0b;
+  box-shadow: 2px 2px 8px rgba(255, 190, 11, 0.2);
 }
 
 
