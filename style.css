@@ -105,6 +105,20 @@ body {
   padding: 0.4rem;
 }
 
+  /* 🌐 Langue et thème empilés à droite */
+  #language-selector,
+  #theme-toggle-container {
+    position: fixed;
+    right: 10px;
+    width: 55px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    z-index: 999;
+  }
+
+  #language-selector { top: 10px; }
+  #theme-toggle-container { top: 55px; }
+
 /* 🚀 Navigation */
 nav {
   display: flex;
@@ -250,19 +264,7 @@ p, .card p {
     font-size: 1.4rem;
   }
 
-  /* 🌐 Langue et thème empilés à droite */
-  #language-selector,
-  #theme-toggle-container {
-    position: fixed;
-    right: 10px;
-    width: 55px;
-    background: var(--card-bg);
-    border-radius: 5px;
-    z-index: 999;
-  }
 
-  #language-selector { top: 10px; }
-  #theme-toggle-container { top: 55px; }
 
   #lang-switcher,
   #theme-toggle {
