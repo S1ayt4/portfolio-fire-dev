@@ -42,7 +42,7 @@ body {
 #language-selector {
   position: absolute;
   top: 2rem;  /* Déplace plus haut */
-  right: 50rem; /* Déplace encore plus à droite */
+  right: 2rem; /* Déplace encore plus à droite */
   z-index: 10;
 }
 
