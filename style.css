@@ -196,3 +196,16 @@ p {
     background-repeat: no-repeat;
   }
 }
+
+#audio-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #f9c74f;
+  cursor: pointer;
+  z-index: 999;
+}
+
