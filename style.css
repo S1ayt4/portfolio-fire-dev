@@ -96,20 +96,29 @@ body {
 
 #lang-switcher,
 #theme-toggle {
+  width: 100%;
   font-size: 1rem;
-  padding: 0.4rem;
+  padding: 0.3rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 5px;
 }
 
-  /* 🌐 Langue et thème empilés à droite */
   #language-selector,
-  #theme-toggle-container {
-    position: fixed;
-    right: 10px;
-    width: 10%;
-    background: none;
-    border-radius: 5px;
-    z-index: 999;
-  }
+#theme-toggle-container {
+  position: fixed;
+  right: 10px;
+  width: auto; /* ✅ corrige la largeur inutile */
+  max-width: 200px;
+  padding: 0.2rem 0.4rem; /* ✅ évite l’effet "bloc vide" */
+  background: rgba(0, 0, 0, 0.3); /* ✅ léger fond subtil */
+  backdrop-filter: blur(3px); /* ✅ effet translucide propre */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  z-index: 999;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); /* ✅ effet flottant */
+}
 
   #language-selector { top: 10px; }
   #theme-toggle-container { top: 55px; }
