@@ -21,13 +21,14 @@ body {
   background-image: url('assets/images/flamme.png');
   background-repeat: no-repeat;
   background-size: auto 100%; /* La hauteur de l’image = hauteur totale de la page */
-  background-position: center 0%; /* Position verticale dynamique via JS */
-  background-attachment: scroll; /* Pour suivre le scroll */
-
+  background-position: center bottom; /* Position verticale ancrée en bas */
+  background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+  
   background-color: #0f0f0f; /* fallback */
   transition: background-position 0.2s ease;
   min-height: 100vh;
 }
+
 
 /* Footer */
 .custom-footer {
