@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     audioArrival.addEventListener("ended", () => {
       if (!isMuted) {
-        audioAmbiance.volume = 0.05; // Volume réduit ici, juste avant le play()
+        audioAmbiance.volume = 0.05;
         audioAmbiance.play().catch(() => {});
       }
     });
@@ -134,18 +134,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function handleParallax() {
-  const isMobile = window.innerWidth <= 768;
-  if (isMobile) {
-    const scrollPosition = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = maxScroll ? scrollPosition / maxScroll : 0;
-    const offset = 40 + (20 * scrollPercent); // de 40% à 60%
-    document.body.style.backgroundPosition = `center ${offset}%`;
-  } else {
-    document.body.style.backgroundPosition = "center center";
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      const scrollPosition = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = maxScroll ? scrollPosition / maxScroll : 0;
+      const offset = 40 + (20 * scrollPercent); // De 40% à 60%
+      document.body.style.backgroundPosition = `center ${offset}%`;
+    } else {
+      document.body.style.backgroundPosition = "center center";
+    }
   }
-}
-
 
   function updateParallaxListeners() {
     window.removeEventListener("scroll", handleParallax);
