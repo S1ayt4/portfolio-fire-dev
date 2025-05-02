@@ -1,42 +1,37 @@
-html, body {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-}
-
-.custom-footer {
-  margin-top: auto;
-}
-
-
-
-/* Général */
+/* Réinitialisation globale */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Style général */
+html, body {
+  height: 100%;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
   color: #f9c74f;
-  font-family: 'Bebas Neue', sans-serif;
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
-/* En-tête */
+/* Footer */
+.custom-footer {
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Header */
 .custom-header {
   padding: 2rem;
   text-align: center;
@@ -46,7 +41,7 @@ body {
   animation: fireGlow 2s infinite alternate ease-in-out;
 }
 
-/* Titre My Portfolio avec fond translucide */
+/* Titre avec fond translucide */
 .translucent-title {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
@@ -82,7 +77,7 @@ nav a:hover {
   box-shadow: 0 0 20px 10px rgba(249, 199, 79, 0.5);
 }
 
-/* Titres de section */
+/* Titres de sections */
 h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -95,16 +90,7 @@ h2 {
 }
 
 /* Paragraphes */
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-  color: #f9c74f;
-}
-
-/* Paragraphes dans les cartes avec bordures latérales */
-.card p {
+p, .card p {
   font-size: 1.2rem;
   line-height: 1.6;
   max-width: 900px;
@@ -112,20 +98,17 @@ p {
   color: #f9c74f;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
-  border-left: 4px solid #f9c74f;
-  border-right: 4px solid #f9c74f;
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
 }
 
-/* Pied de page */
-.custom-footer {
-  text-align: center;
-  margin-top: 4rem;
+.card p {
+  border-left: 4px solid #f9c74f;
+  border-right: 4px solid #f9c74f;
 }
 
-/* Texte du pied de page avec style translucide + couleur argent */
+/* Texte du pied de page */
 .translucent-footer {
   display: inline-block;
   padding: 0.5rem 1.5rem;
@@ -147,7 +130,7 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive : mobile, tablette, desktop */
+/* Media Queries : Responsive */
 @media (max-width: 767px) {
   body { font-size: 14px; }
   .custom-header { font-size: 2rem; }
@@ -177,19 +160,9 @@ p {
     background-position: center center;
     background-attachment: initial;
   }
-
-  .card p {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    border-left: 4px solid #f9c74f;
-    border-right: 4px solid #f9c74f;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
-  }
 }
 
-/* Desktop : afficher toute l'image et désactiver effet */
+/* Desktop : Ajustement pour les grands écrans */
 @media (min-width: 1025px) {
   body {
     background-size: contain;
@@ -210,4 +183,3 @@ p {
   cursor: pointer;
   z-index: 999;
 }
-
