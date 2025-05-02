@@ -41,8 +41,8 @@ body {
 /* Sélecteur de langue */
 #language-selector {
   position: absolute;
-  top: 1.5rem;
-  right: 2rem;
+  top: 0.5rem;  /* Déplace plus haut */
+  right: 2.5rem; /* Déplace plus à droite */
   z-index: 10;
 }
 
