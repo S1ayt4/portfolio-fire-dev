@@ -1,42 +1,28 @@
-/* Correction layout collant le footer en bas */
+/* Layout global pour coller le footer en bas */
 html, body {
   height: 100%;
-  min-height: 100vh;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-.custom-footer {
-  flex-shrink: 0;
-  margin-top: auto;
-  text-align: center;
-  font-size: 1rem;
-}
-
-/* Général */
-* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
+  font-family: 'Bebas Neue', sans-serif;
   background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
   color: #f9c74f;
-  font-family: 'Bebas Neue', sans-serif;
-  overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 /* En-tête */
@@ -106,13 +92,8 @@ p {
   color: #f9c74f;
 }
 
-/* Paragraphes dans les cartes avec bordures latérales */
+/* Cartes */
 .card p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-  color: #f9c74f;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   border-left: 4px solid #f9c74f;
@@ -122,7 +103,12 @@ p {
   box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
 }
 
-/* Texte du pied de page avec style translucide + couleur argent */
+/* Pied de page */
+.custom-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
 .translucent-footer {
   display: inline-block;
   padding: 0.5rem 1.5rem;
@@ -144,7 +130,7 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive : mobile, tablette, desktop */
+/* Responsive */
 @media (max-width: 767px) {
   body { font-size: 14px; }
   .custom-header { font-size: 2rem; }
@@ -168,29 +154,15 @@ p {
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
 }
 
-/* Mode paysage */
 @media (orientation: landscape) {
   body {
     background-position: center center;
-    background-attachment: initial;
-  }
-
-  .card p {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    border-left: 4px solid #f9c74f;
-    border-right: 4px solid #f9c74f;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
   }
 }
 
-/* Desktop : afficher toute l'image et désactiver effet */
 @media (min-width: 1025px) {
   body {
     background-size: contain;
-    background-position: center center;
     background-attachment: initial;
     background-repeat: no-repeat;
   }
