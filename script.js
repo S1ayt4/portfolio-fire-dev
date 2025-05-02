@@ -50,7 +50,7 @@ const translations = {
   }
 };
 
-// Changement de langue
+// Sélecteur de langue
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   const lang = e.target.value;
   const dict = translations[lang];
@@ -63,16 +63,27 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
   });
 });
 
-// Parallax Scrolling - effet doux et limité
-window.addEventListener("scroll", function () {
-  const scrollPosition = window.scrollY;
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
-  const scrollPercent = scrollPosition / maxScroll;
+// Parallax Scrolling - seulement sur mobile
+function handleParallax() {
+  if (window.innerWidth <= 768) {
+    const scrollPosition = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollPosition / maxScroll;
 
-  // Mouvement très doux entre 48% et 52%
-  const min = 48;
-  const max = 52;
-  const offset = min + (max - min) * scrollPercent;
+    const min = 48; // Position de base (centre)
+    const max = 52; // Légère variation
+    const offset = min + (max - min) * scrollPercent;
 
-  document.body.style.backgroundPosition = "center " + offset + "%";
-});
+    document.body.style.backgroundPosition = "center " + offset + "%";
+  } else {
+    // Réinitialiser l'image sur desktop
+    document.body.style.backgroundPosition = "center center";
+  }
+}
+
+// Appliquer à chaque scroll ou resize
+window.addEventListener("scroll", handleParallax);
+window.addEventListener("resize", handleParallax);
+
+// Exécuter au chargement
+document.addEventListener("DOMContentLoaded", handleParallax);
