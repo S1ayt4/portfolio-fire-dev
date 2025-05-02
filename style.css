@@ -110,15 +110,15 @@ body {
 #theme-toggle-container {
   position: fixed;
   right: 10px;
+  width: auto;
   max-width: 200px;
   padding: 0.2rem 0.4rem;
-  background: var(--nav-bg); /* ou rgba(0, 0, 0, 0.7); */
-  backdrop-filter: none; /* 🔁 désactive le flou */
+  background: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   z-index: 999;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
+
 
 #language-selector { top: 10px; }
 #theme-toggle-container { top: 55px; }
