@@ -41,8 +41,8 @@ body {
 /* Sélecteur de langue */
 #language-selector {
   position: absolute;
-  top: 0.5rem;  /* Déplace plus haut */
-  right: 2.5rem; /* Déplace plus à droite */
+  top: 2rem;  /* Déplace plus haut */
+  right: 4rem; /* Déplace encore plus à droite */
   z-index: 10;
 }
 
@@ -160,7 +160,7 @@ p {
   /* Sélecteur de langue en mode portrait */
   #language-selector {
     top: 2rem;  /* Déplace encore plus haut */
-    right: 2rem; /* Réduit légèrement la distance à droite */
+    right: 4rem; /* Déplace encore plus à droite */
   }
 }
 
