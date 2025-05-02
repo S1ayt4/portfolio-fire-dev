@@ -17,17 +17,19 @@ body {
   justify-content: flex-start;
   color: #f9c74f;
   overflow-x: hidden;
+  position: relative;
 
   background-image: url('assets/images/flamme.png');
   background-repeat: no-repeat;
-  background-size: cover; /* L'image va couvrir toute la fenêtre, en remplissant toute la page */
-  background-position: bottom center; /* Ancrée en bas de la page */
-  background-attachment: fixed; /* L'image ne bouge pas pendant le scroll */
+  background-size: auto 100%; /* Ajuste l'image en hauteur de manière dynamique */
+  background-position: center top; /* Positionne l'image en haut au départ */
+  background-attachment: fixed; /* Empêche l'image de se déplacer pendant le scroll */
   
   background-color: #0f0f0f; /* fallback */
   transition: background-position 0.2s ease;
-  min-height: 100vh; /* Pour assurer que le corps prend au moins toute la hauteur de la fenêtre */
+  min-height: 100vh;
 }
+
 
 
 /* Footer */
