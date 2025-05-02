@@ -134,27 +134,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function handleParallax() {
-  const isMobile = window.innerWidth <= 768;
-  if (isMobile) {
-    const scrollPosition = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = maxScroll ? scrollPosition / maxScroll : 0;
-    const offset = 0 + (100 * scrollPercent); // de 0% (haut) à 100% (bas)
-    document.body.style.backgroundPosition = `center ${offset}%`;
-  } else {
-    document.body.style.backgroundPosition = "center center";
-  }
+  const scrollY = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = maxScroll ? scrollY / maxScroll : 0;
+
+  // Position verticale proportionnelle : 0% (haut) à 100% (bas)
+  const positionY = scrollPercent * 100;
+  document.body.style.backgroundPosition = `center ${positionY}%`;
 }
 
+function updateParallaxListeners() {
+  window.removeEventListener("scroll", handleParallax);
+  window.addEventListener("scroll", handleParallax);
+  handleParallax();
+}
 
-  function updateParallaxListeners() {
-    window.removeEventListener("scroll", handleParallax);
-    if (window.innerWidth <= 768) {
-      window.addEventListener("scroll", handleParallax);
-    }
-    handleParallax();
-  }
+window.addEventListener("resize", updateParallaxListeners);
+updateParallaxListeners();
 
-  window.addEventListener("resize", updateParallaxListeners);
-  updateParallaxListeners();
-});
