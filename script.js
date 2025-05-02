@@ -143,21 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTranslations(defaultLang);
 
   // 🎯 Parallax avec image de fond ancrée au bas de la page sans dépasser le bas
-  function updateBackgroundSize() {
-    const header = document.querySelector("header");
-    const footer = document.querySelector("footer");
-
-    if (!header || !footer) return;
-
-    const headerTop = header.offsetTop;
-    const footerBottom = footer.offsetTop + footer.offsetHeight;
-
-    const heightBetween = footerBottom - headerTop;
-
-    // Mise à jour de la taille du fond
-    document.body.style.backgroundSize = `auto ${heightBetween}px`;
-  }
-
   function handleParallax() {
     const scrollY = window.scrollY;
     const documentHeight = document.body.scrollHeight;
@@ -177,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateParallaxListeners() {
     window.removeEventListener("scroll", handleParallax);
     window.addEventListener("scroll", handleParallax);
-    updateBackgroundSize();
     handleParallax();
   }
 
