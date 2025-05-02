@@ -88,7 +88,8 @@ h2 {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   border-radius: 10px;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  display: inline-block;
 }
 
 /* Paragraphes */
@@ -98,10 +99,22 @@ p {
   max-width: 900px;
   margin: 0 auto;
   color: #f9c74f;
+}
+
+/* Paragraphes dans les cartes avec bordures latérales */
+.card p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #f9c74f;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
+  border-left: 4px solid #f9c74f;
+  border-right: 4px solid #f9c74f;
   border-radius: 10px;
   padding: 1rem;
+  box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
 }
 
 /* Pied de page */
@@ -140,7 +153,7 @@ p {
   nav a { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
   section { padding: 1rem; margin: 1rem; text-align: center; }
   h2 { font-size: 1.5rem; }
-  p { font-size: 1rem; }
+  p, .card p { font-size: 1rem; }
   .custom-footer { font-size: 0.9rem; }
   .card { width: 100%; margin-bottom: 1.5rem; }
 }
@@ -151,7 +164,7 @@ p {
   nav a { font-size: 1.4rem; }
   section { padding: 1.5rem; margin: 2rem; }
   h2 { font-size: 1.8rem; }
-  p { font-size: 1.1rem; }
+  p, .card p { font-size: 1.1rem; }
   .custom-footer { font-size: 1rem; }
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
 }
@@ -161,7 +174,7 @@ p {
   nav a { font-size: 1.5rem; }
   section { padding: 2rem; margin: 3rem; }
   h2 { font-size: 2rem; }
-  p { font-size: 1.2rem; }
+  p, .card p { font-size: 1.2rem; }
   .custom-footer { font-size: 1rem; }
   .card { width: 22%; margin-right: 2%; margin-bottom: 2%; }
 }
