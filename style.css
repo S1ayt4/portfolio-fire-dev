@@ -77,16 +77,29 @@ body {
   color: silver;
 }
 
-/* 🎚 Contrôles */
-#audio-toggle,
-#lang-switcher,
-#theme-toggle {
-  font-size: 1rem;
+/* ✅ BOUTONS VISUELLEMENT ALIGNÉS AVEC NAV */
+.btn-like-nav {
   color: var(--text-color);
-  border-radius: 5px;
-  z-index: 999;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: transparent;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  appearance: none;
+  cursor: pointer;
 }
 
+.btn-like-nav:hover {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px 5px rgba(249, 199, 79, 0.5);
+}
+
+/* 🎚 Contrôles */
 #audio-toggle {
   position: absolute;
   top: 10px;
@@ -95,16 +108,27 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--text-color);
+  z-index: 999;
 }
 
+/* ✅ SUPPRESSION DES STYLES CONFLICTUELS */
 #lang-switcher,
 #theme-toggle {
+  all: unset;
+  display: inline-block;
   width: 100%;
-  padding: 0.3rem;
-  background: transparent;
-  border: 1px solid var(--border-color);
+  text-align: center;
+  z-index: 999;
 }
 
+#lang-switcher.btn-like-nav,
+#theme-toggle.btn-like-nav {
+  display: inline-block;
+  width: 100%;
+}
+
+/* ✅ CONTENEURS FIXES */
 #language-selector,
 #theme-toggle-container {
   position: fixed;
@@ -116,8 +140,6 @@ body {
   padding: 0;
   border-radius: 0;
 }
-
-
 
 #language-selector { top: 10px; }
 #theme-toggle-container { top: 55px; }
