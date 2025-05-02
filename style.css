@@ -1,4 +1,4 @@
-/* Style général */
+/* Général */
 * {
   margin: 0;
   padding: 0;
@@ -17,10 +17,10 @@ body {
   min-height: 100vh; /* L'image couvre toute la hauteur de l'écran */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* Assurer que la page commence en haut */
 }
 
-/* Header */
+/* Titre et Header */
 header {
   padding: 2rem;
   text-align: center;
@@ -28,12 +28,17 @@ header {
   letter-spacing: 4px;
   position: relative;
   animation: fireGlow 2s infinite alternate ease-in-out;
+  background: rgba(0, 0, 0, 0.6); /* Fond translucide */
+  backdrop-filter: blur(5px); /* Ajout d'un léger flou de fond */
+  border-radius: 10px;
 }
 
+/* Sélecteur de langue */
 #language-selector {
   position: absolute;
   top: 1.5rem;
   right: 2rem;
+  z-index: 10;
 }
 
 #lang-switcher {
@@ -49,7 +54,7 @@ nav {
   gap: 2rem;
   margin-bottom: 2rem;
   animation: fadeIn 2s ease-out;
-  background: rgba(0, 0, 0, 0.7); /* Légère opacité pour le menu */
+  background: rgba(0, 0, 0, 0.7); /* Fond translucide */
   padding: 1rem;
   border-radius: 8px;
 }
@@ -62,7 +67,6 @@ nav a {
   border: 2px solid #f9c74f;
   border-radius: 8px;
   transition: all 0.4s ease;
-  position: relative;
 }
 
 nav a:hover {
@@ -74,9 +78,15 @@ nav a:hover {
 /* Portfolio Section */
 section {
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
   animation: fadeIn 1.5s ease forwards;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6); /* Fond translucide pour le portfolio */
+  backdrop-filter: blur(5px); /* Légère séparation floue avec l'arrière-plan */
+  border-radius: 10px;
 }
 
 h2 {
@@ -88,6 +98,8 @@ h2 {
 p {
   font-size: 1.2rem;
   line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .card {
@@ -99,8 +111,8 @@ p {
   width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
   margin-right: 2%; /* Espacement entre les cartes */
   margin-bottom: 2%; /* Espacement entre les lignes */
-  display: inline-block;
-  box-sizing: border-box;
+  background: rgba(42, 42, 42, 0.8); /* Bloc translucide */
+  border-radius: 10px; /* Coins arrondis */
 }
 
 .card:hover {
@@ -108,12 +120,16 @@ p {
   opacity: 0.95;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
   margin-top: 4rem;
   font-size: 1rem;
   color: #999;
+  background: rgba(0, 0, 0, 0.7); /* Fond translucide */
+  backdrop-filter: blur(5px); /* Ajout de flou */
+  border-radius: 10px;
 }
 
 /* 🔥 Animations 🔥 */
@@ -127,7 +143,7 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries pour les écrans plus petits */
+/* Media Queries */
 
 /* Mobile */
 @media (max-width: 767px) {
@@ -142,7 +158,6 @@ footer {
   nav {
     flex-direction: column;
     gap: 1rem;
-    background: rgba(0, 0, 0, 0.7); /* Assurez-vous que le menu soit visible sur le fond */
     padding: 1rem;
   }
 
@@ -154,8 +169,8 @@ footer {
   section {
     padding: 1rem;
     margin: 1rem;
-    flex-direction: column; /* Les sections seront en une seule colonne sur mobile */
-    text-align: center; /* Centrer le texte sur mobile */
+    flex-direction: column;
+    text-align: center;
   }
 
   h2 {
@@ -170,7 +185,6 @@ footer {
     font-size: 0.9rem;
   }
 
-  /* Disposition des cartes sur mobile : une seule colonne */
   .card {
     width: 100%;
     margin-right: 0;
@@ -178,7 +192,7 @@ footer {
   }
 }
 
-/* Tablette (768px à 1024px) */
+/* Tablette */
 @media (min-width: 768px) and (max-width: 1024px) {
   header {
     font-size: 2.5rem;
@@ -198,7 +212,6 @@ footer {
     padding: 1.5rem;
     margin: 2rem;
     flex-wrap: wrap;
-    text-align: center; /* Centrer le texte */
   }
 
   h2 {
@@ -213,16 +226,15 @@ footer {
     font-size: 1rem;
   }
 
-  /* Disposition des cartes sur tablette : 2 colonnes */
   .card {
-    width: 48%; /* Deux cartes par ligne */
+    width: 48%;
     display: inline-block;
-    margin-right: 4%; /* Plus d'espace entre les blocs */
+    margin-right: 4%;
     margin-bottom: 2rem;
   }
 }
 
-/* Grand écran (plus de 1024px) */
+/* Grand écran */
 @media (min-width: 1024px) {
   nav {
     justify-content: center;
@@ -237,7 +249,6 @@ footer {
     padding: 2rem;
     margin: 3rem;
     flex-wrap: wrap;
-    text-align: center; /* Centrer le texte */
   }
 
   h2 {
@@ -252,10 +263,9 @@ footer {
     font-size: 1rem;
   }
 
-  /* Disposition des cartes sur grand écran : 4 colonnes */
   .card {
-    width: 22%; /* Chaque bloc fait 22% de la largeur de la section pour 4 par ligne */
-    margin-right: 2%; /* Espacement entre les cartes */
-    margin-bottom: 2%; /* Espacement entre les lignes */
+    width: 22%;
+    margin-right: 2%;
+    margin-bottom: 2%;
   }
 }
