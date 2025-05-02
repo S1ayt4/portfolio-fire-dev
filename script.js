@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   langSwitcher.value = defaultLang;
   updateTranslations(defaultLang);
 
-  // 🎯 Parallax avec image de fond ancrée au bas de la page
+  // 🎯 Parallax avec image de fond ancrée au bas de la page sans dépasser le bas
   function updateBackgroundSize() {
     const header = document.querySelector("header");
     const footer = document.querySelector("footer");
@@ -166,11 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Calcul du défilement total et ajustement de l'image de fond
     const scrollPercent = (scrollY / (documentHeight - windowHeight));
 
-    // Ajuster le fond pour qu'il reste ancré au bas
-    const maxOffset = windowHeight * 0.3; // Ajuster ce facteur pour changer la vitesse du fond
-    const offset = scrollPercent * maxOffset;
+    // Limiter le défilement de l'image pour qu'elle ne dépasse pas le bas
+    const maxOffset = windowHeight * 0.3; // Ajuste la vitesse du fond
+    const offset = Math.min(scrollPercent * maxOffset, maxOffset);
 
-    // Mettre à jour la position de l'image de fond avec un ancrage au bas
+    // Assurer que l'image de fond reste ancrée au bas sans dépasser le bas
     document.body.style.backgroundPosition = `center ${-offset}px`;
   }
 
