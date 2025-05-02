@@ -12,11 +12,12 @@ body {
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
-  background-position: center center; /* Centré par défaut */
+  background-position: center top; /* Initialement centré en haut */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transition: background-position 0.2s linear; /* Smooth transition */
 }
 
 /* En-tête */
@@ -35,20 +36,6 @@ body {
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 0.5rem 1.5rem;
-}
-
-/* Sélecteur de langue */
-#language-selector {
-  position: absolute;
-  top: 2rem;  /* Déplace plus haut */
-  right: 4rem; /* Déplace encore plus à droite */
-  z-index: 10;
-}
-
-#lang-switcher {
-  font-size: 1rem;
-  padding: 0.3rem;
-  border-radius: 6px;
 }
 
 /* Navbar */
@@ -100,22 +87,6 @@ p {
   color: #f9c74f;
 }
 
-/* Paragraphes dans les cartes avec bordures latérales */
-.card p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-  color: #f9c74f;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  border-left: 4px solid #f9c74f;
-  border-right: 4px solid #f9c74f;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
-}
-
 /* Pied de page */
 .custom-footer {
   text-align: center;
@@ -155,20 +126,6 @@ p {
   p, .card p { font-size: 1rem; }
   .custom-footer { font-size: 0.9rem; }
   .card { width: 100%; margin-bottom: 1.5rem; }
-
-  /* Sélecteur de langue en mode portrait */
-  #language-selector {
-    top: 2rem;  /* Déplace encore plus haut */
-    right: 4rem; /* Déplace encore plus à droite */
-  }
-}
-
-/* Mode paysage : Centrer l'image de fond */
-@media (orientation: landscape) {
-  body {
-    background-position: center center;  /* Centrer l'image */
-    background-attachment: initial; /* Désactive le background-attachment fixe */
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
