@@ -77,6 +77,15 @@ body {
   color: silver;
 }
 
+/* Thème sombre : texte jaune avec halo noir */
+body:not(.light-theme) #main-title {
+  color: #f9c74f; /* ton jaune */
+  text-shadow:
+    1px 1px 2px black,
+    -1px -1px 2px black,
+    0 0 5px rgba(0, 0, 0, 0.7); /* effet halo noir */
+}
+
 /* ✅ BOUTONS VISUELLEMENT ALIGNÉS AVEC NAV */
 .btn-like-nav {
   color: var(--text-color);
