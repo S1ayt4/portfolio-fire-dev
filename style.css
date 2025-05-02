@@ -12,8 +12,7 @@ body {
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
-  background-position: bottom center;
-  background-attachment: fixed;
+  background-position: center center; /* Centré par défaut */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -167,7 +166,8 @@ p {
 /* Mode paysage : Centrer l'image de fond */
 @media (orientation: landscape) {
   body {
-    background-position: center center;  /* Centrer l'image au lieu de l'aligner en bas */
+    background-position: center center;  /* Centrer l'image */
+    background-attachment: initial; /* Désactive le background-attachment fixe */
   }
 }
 
