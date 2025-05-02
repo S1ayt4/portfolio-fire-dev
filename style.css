@@ -1,3 +1,18 @@
+/* Ajout en haut du CSS */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-footer {
+  margin-top: auto;
+}
+
+
 /* Général */
 * {
   margin: 0;
