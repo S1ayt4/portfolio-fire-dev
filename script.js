@@ -1,6 +1,6 @@
 // === Sons ===
 const arriverSound = new Howl({
-  src: ['sounds/arriver-sur-le-site-web.ogg', 'sounds/arriver-sur-le-site-web.mp3'],
+  src: ['assets/sounds/arriver-sur-le-site-web.ogg', 'assets/sounds/arriver-sur-le-site-web.mp3'],
   volume: 0.6,
   onend: () => {
     ambianceSound.play();
@@ -8,34 +8,35 @@ const arriverSound = new Howl({
 });
 
 const ambianceSound = new Howl({
-  src: ['sounds/ambiance.ogg', 'sounds/ambiance.mp3'],
+  src: ['assets/sounds/ambiance.ogg', 'assets/sounds/ambiance.mp3'],
   volume: 0.3,
   loop: true
 });
 
 const clicSound = new Howl({
-  src: ['sounds/clic.ogg', 'sounds/clic.mp3'],
+  src: ['assets/sounds/clic.ogg', 'assets/sounds/clic.mp3'],
   volume: 0.5
 });
 
 const changementPageSound = new Howl({
-  src: ['sounds/changement-de-page.ogg', 'sounds/changement-de-page.mp3'],
+  src: ['assets/sounds/changement-de-page.ogg', 'assets/sounds/changement-de-page.mp3'],
   volume: 0.5
 });
 
 // Joue le son d’arrivée dès que la page est chargée
 document.addEventListener("DOMContentLoaded", () => {
   arriverSound.play();
+  updateParallaxListeners(); // init parallax ici aussi
 });
 
-// === Ajout du son lors des clics dans la navbar ===
+// === Sons sur les clics de la navbar ===
 document.querySelectorAll("nav a").forEach(link => {
   link.addEventListener("click", () => {
     clicSound.play();
   });
 });
 
-// === Ajout du son lors du changement de langue ===
+// === Changement de langue avec son ===
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   changementPageSound.play();
 
@@ -52,7 +53,7 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
 
 // === Traductions ===
 const translations = {
-  /* (inchangé) */
+  // (coller ici ton objet translations tel quel, inchangé)
 };
 
 // === Parallax doux sur mobile uniquement ===
@@ -87,4 +88,3 @@ function updateParallaxListeners() {
 }
 
 window.addEventListener("resize", updateParallaxListeners);
-document.addEventListener("DOMContentLoaded", updateParallaxListeners);
