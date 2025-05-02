@@ -12,12 +12,11 @@ body {
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
-  background-position: center top; /* Initialement centré en haut */
+  background-position: center center; /* Centré par défaut */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transition: background-position 0.2s linear; /* Smooth transition */
 }
 
 /* En-tête */
@@ -139,12 +138,10 @@ p {
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
 }
 
-@media (min-width: 1024px) {
-  nav { gap: 2rem; }
-  nav a { font-size: 1.5rem; }
-  section { padding: 2rem; margin: 3rem; }
-  h2 { font-size: 2rem; }
-  p, .card p { font-size: 1.2rem; }
-  .custom-footer { font-size: 1rem; }
-  .card { width: 22%; margin-right: 2%; margin-bottom: 2%; }
+/* Mode paysage : Centrer l'image de fond */
+@media (orientation: landscape) {
+  body {
+    background-position: center center;  /* Centrer l'image */
+    background-attachment: initial; /* Désactive le background-attachment fixe */
+  }
 }
