@@ -1,4 +1,4 @@
-// Traductions
+// === Traductions ===
 const translations = {
   en: {
     title: "MY PORTFOLIO",
@@ -50,7 +50,7 @@ const translations = {
   }
 };
 
-// Sélecteur de langue
+// === Changement de langue ===
 document.getElementById("lang-switcher").addEventListener("change", (e) => {
   const lang = e.target.value;
   const dict = translations[lang];
@@ -63,27 +63,38 @@ document.getElementById("lang-switcher").addEventListener("change", (e) => {
   });
 });
 
-// Parallax Scrolling - seulement sur mobile
+// === Parallax doux sur mobile uniquement ===
 function handleParallax() {
-  if (window.innerWidth <= 768) {
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
     const scrollPosition = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = scrollPosition / maxScroll;
 
-    const min = 48; // Position de base (centre)
-    const max = 52; // Légère variation
+    const min = 48;
+    const max = 52;
     const offset = min + (max - min) * scrollPercent;
 
-    document.body.style.backgroundPosition = "center " + offset + "%";
+    document.body.style.backgroundPosition = `center ${offset}%`;
   } else {
-    // Réinitialiser l'image sur desktop
     document.body.style.backgroundPosition = "center center";
   }
 }
 
-// Appliquer à chaque scroll ou resize
-window.addEventListener("scroll", handleParallax);
-window.addEventListener("resize", handleParallax);
+function updateParallaxListeners() {
+  const isMobile = window.innerWidth <= 768;
 
-// Exécuter au chargement
-document.addEventListener("DOMContentLoaded", handleParallax);
+  window.removeEventListener("scroll", handleParallax);
+
+  if (isMobile) {
+    window.addEventListener("scroll", handleParallax);
+  }
+
+  // Réinitialise ou applique immédiatement
+  handleParallax();
+}
+
+// Initialisation
+window.addEventListener("resize", updateParallaxListeners);
+document.addEventListener("DOMContentLoaded", updateParallaxListeners);
