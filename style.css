@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
   background-image: url('assets/images/flamme.png');
   background-size: cover;
-  background-position: center center; /* Centré par défaut */
+  background-position: center center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -93,13 +93,13 @@ p {
   max-width: 900px;
   margin: 0 auto;
   color: #f9c74f;
-  background: rgba(0, 0, 0, 0.6); /* Fond translucide */
-  backdrop-filter: blur(5px);  /* Flou en arrière-plan */
-  border-left: 4px solid #f9c74f;  /* Bordure gauche jaune */
-  border-right: 4px solid #f9c74f; /* Bordure droite jaune */
-  border-radius: 10px;  /* Coins arrondis */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-left: 4px solid #f9c74f;
+  border-right: 4px solid #f9c74f;
+  border-radius: 10px;
   padding: 1rem;
-  box-shadow: 0 0 10px rgba(249, 199, 79, 0.3); /* Ombre douce autour */
+  box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
 }
 
 /* Pied de page */
@@ -154,14 +154,13 @@ p {
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
 }
 
-/* Mode paysage : Centrer l'image de fond et réintégrer les effets */
+/* Mode paysage */
 @media (orientation: landscape) {
   body {
-    background-position: center center;  /* Centrer l'image */
-    background-attachment: initial; /* Désactive le background-attachment fixe */
+    background-position: center center;
+    background-attachment: initial;
   }
 
-  /* Réintégrer les styles d'effet sur les cartes et sections */
   .card p {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
@@ -170,5 +169,15 @@ p {
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 0 10px rgba(249, 199, 79, 0.3);
+  }
+}
+
+/* Desktop : afficher toute l'image et désactiver effet */
+@media (min-width: 1025px) {
+  body {
+    background-size: contain;
+    background-position: center center;
+    background-attachment: initial;
+    background-repeat: no-repeat;
   }
 }
