@@ -151,12 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Calcul du défilement total et ajustement de l'image de fond
     const scrollPercent = (scrollY / (documentHeight - windowHeight));
 
-    // Limiter le défilement de l'image pour qu'elle ne dépasse pas le bas
-    const maxOffset = windowHeight * 0.3; // Ajuste la vitesse du fond
-    const offset = Math.min(scrollPercent * maxOffset, maxOffset);
+    // Calcul du déplacement de l'image basé sur le pourcentage de scroll
+    const backgroundPositionY = scrollPercent * 100;
 
-    // Assurer que l'image de fond reste ancrée au bas sans dépasser le bas
-    document.body.style.backgroundPosition = `center ${-offset}px`;
+    // L'image de fond se déplace en fonction du pourcentage de scroll
+    document.body.style.backgroundPosition = `center ${backgroundPositionY}%`;
   }
 
   function updateParallaxListeners() {
