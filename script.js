@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isMuted = false;
   let hasInteracted = false;
+  const defaultLang = "en";
 
   const translations = {
     en: {
@@ -72,8 +73,19 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+  function updateTranslations(lang) {
+    const dict = translations[lang];
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+  }
+
   function initAudioPlayback() {
     if (!hasInteracted) return;
+
     if (!isMuted) {
       audioArrival.play().catch(() => {});
     }
@@ -81,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     audioArrival.addEventListener("ended", () => {
       if (!isMuted) {
         audioAmbiance.volume = 0.05;
+        audioAmbiance.loop = true;
         audioAmbiance.play().catch(() => {});
       }
     });
@@ -111,14 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   langSwitcher.addEventListener("change", (e) => {
     const lang = e.target.value;
-    const dict = translations[lang];
-
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (dict[key]) {
-        el.textContent = dict[key];
-      }
-    });
+    updateTranslations(lang);
 
     if (!isMuted) {
       audioLang.play().catch(() => {});
@@ -133,22 +139,26 @@ document.addEventListener("DOMContentLoaded", () => {
     audioToggle.textContent = isMuted ? "🔇" : "🔊";
   });
 
+  // Initialise la langue par défaut à l’ouverture
+  langSwitcher.value = defaultLang;
+  updateTranslations(defaultLang);
+
+  // Parallax simple
   function handleParallax() {
-  const scrollY = window.scrollY;
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
-  const scrollPercent = maxScroll ? scrollY / maxScroll : 0;
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = maxScroll ? scrollY / maxScroll : 0;
 
-  // Position verticale proportionnelle : 0% (haut) à 100% (bas)
-  const positionY = scrollPercent * 100;
-  document.body.style.backgroundPosition = `center ${positionY}%`;
-}
+    const positionY = scrollPercent * 100;
+    document.body.style.backgroundPosition = `center ${positionY}%`;
+  }
 
-function updateParallaxListeners() {
-  window.removeEventListener("scroll", handleParallax);
-  window.addEventListener("scroll", handleParallax);
-  handleParallax();
-}
+  function updateParallaxListeners() {
+    window.removeEventListener("scroll", handleParallax);
+    window.addEventListener("scroll", handleParallax);
+    handleParallax();
+  }
 
-window.addEventListener("resize", updateParallaxListeners);
-updateParallaxListeners();
-
+  window.addEventListener("resize", updateParallaxListeners);
+  updateParallaxListeners();
+});
