@@ -14,8 +14,12 @@ body {
   padding: 0;
   background-image: url('assets/images/flamme.png'); /* Ajoutez l'image de fond */
   background-size: cover; /* L'image couvre tout l'écran */
-  background-position: bottom center; /* L'image sera positionnée en bas au centre */
-  background-attachment: fixed; /* Rendre l'image fixe pendant le défilement */
+  background-position: bottom center; /* Fixer l'image en bas */
+  background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+  min-height: 100vh; /* Assurer que l'image couvre toute la hauteur de l'écran */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Header */
@@ -136,9 +140,9 @@ footer {
 @media (max-width: 767px) {
   body {
     font-size: 14px;
-    background-size: cover; /* L'image couvre tout l'écran */
-    background-position: bottom center; /* Positionner l'image en bas */
+    background-position: bottom center; /* L'image reste en bas sur mobile */
     background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+    background-size: cover;
   }
 
   header {
