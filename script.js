@@ -17,14 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_ux: "UX/UI",
       nav_support: "Customer Success",
       scraping_title: "Scraping & Automation",
-      scraping_text: "Using Playwright, Selenium, CloudScraper, BeautifulSoup with Notion & n8n integration. Tested in GitHub Codespace, Google Colab, and Docker.",
+      scraping_text:
+        "Using Playwright, Selenium, CloudScraper, BeautifulSoup with Notion & n8n integration. Tested in GitHub Codespace, Google Colab, and Docker.",
       dev_title: "Web & Software Development",
-      dev_text: "Web project design with Flask, Notion API, GitHub Actions. Experience in workflow automation and deployment via GitHub Pages & Codespace.",
+      dev_text:
+        "Web project design with Flask, Notion API, GitHub Actions. Experience in workflow automation and deployment via GitHub Pages & Codespace.",
       ux_title: "UX/UI & Design",
-      ux_text: "Projects designed in Figma, integrating UX principles for improved experience. Visual style influenced by Japanimation and the shonen universe.",
+      ux_text:
+        "Projects designed in Figma, integrating UX principles for improved experience. Visual style influenced by Japanimation and the shonen universe.",
       support_title: "Customer Success & Communication",
-      support_text: "Experience in client management, clear technical communication, and project documentation in Notion. Strong ability to see projects through to success.",
-      rights: "All rights reserved"
+      support_text:
+        "Experience in client management, clear technical communication, and project documentation in Notion. Strong ability to see projects through to success.",
+      rights: "All rights reserved",
     },
     fr: {
       title: "MON PORTFOLIO",
@@ -33,14 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_ux: "UX/UI",
       nav_support: "Relation client",
       scraping_title: "Scraping & Automatisation",
-      scraping_text: "Utilisation de Playwright, Selenium, CloudScraper, BeautifulSoup avec intégration Notion & n8n. Testé sur GitHub Codespace, Google Colab et Docker.",
+      scraping_text:
+        "Utilisation de Playwright, Selenium, CloudScraper, BeautifulSoup avec intégration Notion & n8n. Testé sur GitHub Codespace, Google Colab et Docker.",
       dev_title: "Développement Web & Logiciel",
-      dev_text: "Conception de projets web avec Flask, Notion API, GitHub Actions. Expérience en automatisation et déploiement via GitHub Pages & Codespace.",
+      dev_text:
+        "Conception de projets web avec Flask, Notion API, GitHub Actions. Expérience en automatisation et déploiement via GitHub Pages & Codespace.",
       ux_title: "UX/UI & Design",
-      ux_text: "Projets conçus sur Figma, intégrant les principes UX. Style visuel inspiré de la japanimation et de l’univers shōnen.",
+      ux_text:
+        "Projets conçus sur Figma, intégrant les principes UX. Style visuel inspiré de la japanimation et de l’univers shōnen.",
       support_title: "Relation client & Communication",
-      support_text: "Expérience en gestion client, communication technique claire, documentation de projets sur Notion. Capacité à mener les projets à bien.",
-      rights: "Tous droits réservés"
+      support_text:
+        "Expérience en gestion client, communication technique claire, documentation de projets sur Notion. Capacité à mener les projets à bien.",
+      rights: "Tous droits réservés",
     },
     es: {
       title: "MI PORTAFOLIO",
@@ -49,15 +57,19 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_ux: "UX/UI",
       nav_support: "Atención al cliente",
       scraping_title: "Scraping y Automatización",
-      scraping_text: "Uso de Playwright, Selenium, CloudScraper, BeautifulSoup con integración Notion y n8n. Probado en GitHub Codespace, Google Colab y Docker.",
+      scraping_text:
+        "Uso de Playwright, Selenium, CloudScraper, BeautifulSoup con integración Notion y n8n. Probado en GitHub Codespace, Google Colab y Docker.",
       dev_title: "Desarrollo Web y Software",
-      dev_text: "Diseño de proyectos con Flask, API de Notion, GitHub Actions. Experiencia en automatización y despliegue con GitHub Pages y Codespace.",
+      dev_text:
+        "Diseño de proyectos con Flask, API de Notion, GitHub Actions. Experiencia en automatización y despliegue con GitHub Pages y Codespace.",
       ux_title: "UX/UI y Diseño",
-      ux_text: "Proyectos diseñados en Figma con principios UX. Estilo visual influenciado por la animación japonesa y el universo shōnen.",
+      ux_text:
+        "Proyectos diseñados en Figma con principios UX. Estilo visual influenciado por la animación japonesa y el universo shōnen.",
       support_title: "Atención al cliente y Comunicación",
-      support_text: "Experiencia en gestión de clientes, comunicación técnica clara y documentación en Notion. Alta capacidad para llevar proyectos al éxito.",
-      rights: "Todos los derechos reservados"
-    }
+      support_text:
+        "Experiencia en gestión de clientes, comunicación técnica clara y documentación en Notion. Alta capacidad para llevar proyectos al éxito.",
+      rights: "Todos los derechos reservados",
+    },
   };
 
   function initAudioPlayback() {
@@ -74,19 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setupFirstInteraction() {
-    document.body.addEventListener("click", () => {
-      if (!hasInteracted) {
-        hasInteracted = true;
-        initAudioPlayback();
-      }
-    }, { once: true });
+    document.body.addEventListener(
+      "click",
+      () => {
+        if (!hasInteracted) {
+          hasInteracted = true;
+          initAudioPlayback();
+        }
+      },
+      { once: true }
+    );
   }
 
   setupFirstInteraction();
 
-  document.querySelectorAll("nav a").forEach(link => {
+  document.querySelectorAll("nav a").forEach((link) => {
     link.addEventListener("click", () => {
-      if (!isMuted) audioClic.play().catch(() => {});
+      if (!isMuted) {
+        audioClic.play().catch(() => {});
+      }
     });
   });
 
@@ -96,15 +114,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      if (dict[key]) el.textContent = dict[key];
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
     });
 
-    if (!isMuted) audioLang.play().catch(() => {});
+    if (!isMuted) {
+      audioLang.play().catch(() => {});
+    }
   });
 
   audioToggle.addEventListener("click", () => {
     isMuted = !isMuted;
-    [audioArrival, audioAmbiance, audioClic, audioLang].forEach(audio => {
+    [audioArrival, audioAmbiance, audioClic, audioLang].forEach((audio) => {
       audio.muted = isMuted;
     });
     audioToggle.textContent = isMuted ? "🔇" : "🔊";
@@ -115,8 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isMobile) {
       const scrollPosition = window.scrollY;
       const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = scrollPosition / maxScroll;
-      const min = 48, max = 52;
+      const scrollPercent = maxScroll ? scrollPosition / maxScroll : 0;
+      const min = 48,
+        max = 52;
       const offset = min + (max - min) * scrollPercent;
       document.body.style.backgroundPosition = `center ${offset}%`;
     } else {
@@ -125,9 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateParallaxListeners() {
-    const isMobile = window.innerWidth <= 768;
     window.removeEventListener("scroll", handleParallax);
-    if (isMobile) window.addEventListener("scroll", handleParallax);
+    if (window.innerWidth <= 768) {
+      window.addEventListener("scroll", handleParallax);
+    }
     handleParallax();
   }
 
