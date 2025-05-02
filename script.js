@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const audioArrival = document.getElementById("audio-arrival");
   const audioAmbiance = document.getElementById("audio-ambiance");
-  audioAmbiance.volume = 0.05; // Réduction du volume de fond
   const audioClic = document.getElementById("audio-clic");
   const audioLang = document.getElementById("audio-lang");
   const audioToggle = document.getElementById("audio-toggle");
@@ -81,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     audioArrival.addEventListener("ended", () => {
       if (!isMuted) {
+        audioAmbiance.volume = 0.05; // Volume réduit ici, juste avant le play()
         audioAmbiance.play().catch(() => {});
       }
     });
