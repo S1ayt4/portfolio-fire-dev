@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const audioArrival = document.getElementById("audio-arrival");
   const audioAmbiance = document.getElementById("audio-ambiance");
-  audioAmbiance.volume = 0.2; // Réduction du volume de fond
+  audioAmbiance.volume = 0.05; // Réduction du volume de fond
   const audioClic = document.getElementById("audio-clic");
   const audioLang = document.getElementById("audio-lang");
   const audioToggle = document.getElementById("audio-toggle");
