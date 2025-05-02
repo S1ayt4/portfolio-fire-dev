@@ -7,12 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- Ajout de Howler.js pour le son -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
   <header class="custom-header">
     <div class="header-content">
+      <!-- 🔇 Bouton audio -->
+      <button id="audio-toggle" aria-label="Toggle Sound">🔊</button>
+      
       🔥 <span class="translucent-title" data-i18n="title">MY PORTFOLIO</span> 🔥
       <div id="language-selector">
         <select id="lang-switcher">
@@ -72,6 +73,27 @@
   <footer class="custom-footer">
     <p class="translucent-footer">© 2025 Sylvain Thobor — <span data-i18n="rights">All rights reserved</span></p>
   </footer>
+
+  <!-- Audio Elements -->
+  <audio id="audio-arrival" autoplay>
+    <source src="assets/sounds/arriver-sur-le-site-web.mp3" type="audio/mpeg" />
+    <source src="assets/sounds/arriver-sur-le-site-web.ogg" type="audio/ogg" />
+  </audio>
+
+  <audio id="audio-ambiance" loop>
+    <source src="assets/sounds/ambiance.mp3" type="audio/mpeg" />
+    <source src="assets/sounds/ambiance.ogg" type="audio/ogg" />
+  </audio>
+
+  <audio id="audio-clic">
+    <source src="assets/sounds/clic.mp3" type="audio/mpeg" />
+    <source src="assets/sounds/clic.ogg" type="audio/ogg" />
+  </audio>
+
+  <audio id="audio-lang">
+    <source src="assets/sounds/changement-de-page.mp3" type="audio/mpeg" />
+    <source src="assets/sounds/changement-de-page.ogg" type="audio/ogg" />
+  </audio>
 
   <script src="script.js"></script>
 </body>
