@@ -139,11 +139,25 @@ document.addEventListener("DOMContentLoaded", () => {
     audioToggle.textContent = isMuted ? "🔇" : "🔊";
   });
 
-  // Initialise la langue par défaut à l’ouverture
   langSwitcher.value = defaultLang;
   updateTranslations(defaultLang);
 
-  // Parallax simple
+  // 🎯 Parallax avec taille d’image ajustée entre header et footer
+  function updateBackgroundSize() {
+    const header = document.querySelector("header");
+    const footer = document.querySelector("footer");
+
+    if (!header || !footer) return;
+
+    const headerTop = header.offsetTop;
+    const footerBottom = footer.offsetTop + footer.offsetHeight;
+
+    const heightBetween = footerBottom - headerTop;
+
+    // Mise à jour de la taille du fond
+    document.body.style.backgroundSize = `auto ${heightBetween}px`;
+  }
+
   function handleParallax() {
     const scrollY = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -156,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateParallaxListeners() {
     window.removeEventListener("scroll", handleParallax);
     window.addEventListener("scroll", handleParallax);
+    updateBackgroundSize();
     handleParallax();
   }
 
