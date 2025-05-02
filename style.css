@@ -164,6 +164,13 @@ p {
   }
 }
 
+/* Mode paysage : Centrer l'image de fond */
+@media (orientation: landscape) {
+  body {
+    background-position: center center;  /* Centrer l'image au lieu de l'aligner en bas */
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .custom-header { font-size: 2.5rem; }
   nav { gap: 1.5rem; }
