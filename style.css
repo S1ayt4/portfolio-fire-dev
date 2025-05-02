@@ -15,15 +15,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
   color: #f9c74f;
   overflow-x: hidden;
+
   background-image: url('assets/images/flamme.png');
-  background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  background-size: auto 100%; /* La hauteur de l’image = hauteur totale de la page */
+  background-position: center 0%; /* Position verticale dynamique via JS */
+  background-attachment: scroll; /* Pour suivre le scroll */
+
+  background-color: #0f0f0f; /* fallback */
   transition: background-position 0.2s ease;
+  min-height: 100vh;
 }
 
 /* Footer */
@@ -131,7 +134,7 @@ p, .card p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries : Responsive */
+/* Media Queries */
 @media (max-width: 767px) {
   body { font-size: 14px; }
   .custom-header { font-size: 2rem; }
@@ -155,23 +158,7 @@ p, .card p {
   .card { width: 48%; display: inline-block; margin-right: 4%; margin-bottom: 2rem; }
 }
 
-/* Mode paysage */
-@media (orientation: landscape) {
-  body {
-    background-position: center center;
-    background-attachment: initial;
-  }
-}
-
-/* Desktop : Ajustement pour les grands écrans */
-@media (min-width: 1025px) {
-  body {
-    background-size: contain;
-    background-position: center center;
-    background-attachment: initial;
-    background-repeat: no-repeat;
-  }
-}
+/* Pas besoin de background-attachment ni contain ici */
 
 #audio-toggle {
   position: absolute;
