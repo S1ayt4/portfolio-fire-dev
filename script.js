@@ -18,13 +18,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🔁 Fonction de traduction
   function updateTranslations(lang) {
-    const dict = translations[lang];
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (dict[key]) {
+  const dict = translations[lang];
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key]) {
+      if (el.tagName === "OPTION") {
+        // Préserve l'emoji (premier mot) si présent
+        const parts = el.textContent.trim().split(" ");
+        const maybeEmoji = parts.length > 1 ? parts[0] : "";
+        el.textContent = maybeEmoji ? `${maybeEmoji} ${dict[key]}` : dict[key];
+      } else {
         el.textContent = dict[key];
       }
-    });
+    }
+  });
+}
 
     // Traduire les options du sélecteur de thème
     themeSelect.querySelectorAll("option").forEach(opt => {
